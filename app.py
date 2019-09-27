@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 
 from flask import Flask
 from redis import Redis
 
+redis_host = os.getenv('REDIS_HOST', "redis")
+redis_port = os.getenv('REDIS_PORT', 6379)
+
 app = Flask(__name__)
-redis = Redis(host="redis", port=6379)
+redis = Redis(host=redis_host, port=redis_port)
 
 @app.route('/')
 def hello():

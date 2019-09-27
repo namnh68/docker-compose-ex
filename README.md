@@ -19,7 +19,7 @@ docker run -d --name redis-server -p 6379:6379 redis
 
 ```
 docker run -d --name webapp-server -p 5000:5000 \
---link redis-server:redis app_web
+--link redis-server:redis --env "REDIS_HOST=redis" --env "REDIS_PORT=6379" app_web
 ```
 
 Done! Have fun
